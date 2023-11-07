@@ -40,15 +40,11 @@ if alleles_file is not None and new_species is not None:
     markerlist = [x[0] for x in alleles_list]
 
     timestr = time.strftime("%Y-%m-%d")
-    # markerlist.insert(0, {'marker_name': "marker_name", "person": "person", "uploadeddate": timestr})
     for i in alleles_list:
         markerlist.append({'Marker_name': i[0], 'Species': new_species, 'Person': user, 'Date': timestr})
 
-    #    value = {'marker_name': "marker_name", "person": "person", "uploadeddate": timestr}
-    #    supabase.table("almond").insert(value).execute()
-
-    # for m in markerlist:
-    #     supabase.table("speciesDB").insert(m).execute()
+    for m in markerlist:
+        supabase.table("speciesDB").insert(m).execute()
 
     st.success(
         "%s markers were added to the database correctly"
